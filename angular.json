@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "mural-ang-app"
+    }
+  },
+  "defaultProject": "mural-ang-app",
+  "cli": {
+    "analytics": "bcd4e18e-7efd-4a29-91c0-8d6c8cb5e311"
+  }
 }

@@ -1,1 +1,78 @@
-/* You can add global styles to this file, and also import other style files */
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+/* Importing Bootstrap SCSS file. */
+//@import '~bootstrap/scss/bootstrap';
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+/* Colors */
+$navcolor: #BCBCBC;
+
+
+
+body { font-family: 'Nunito Sans', sans-serif; }
+
+nav {
+  background-color: $navcolor;
+  display: flex;
+
+  div {
+    margin: auto;
+    
+    ul.navbar-nav {
+      flex-direction: row;
+      
+      li {
+        margin: 0 10px;
+
+        a {
+          font-size: 14px;
+          font-weight: 600;
+          
+          &, &:visited { color: #333; }
+          &:hover{color:black}
+        }
+      }
+    }
+  }
+}
+
+div.main {
+  
+  h1 {
+    margin: 30px auto;
+    font-size: 30px;
+    font-weight: 700;
+    color: #1A1A1A;
+    text-align: center;
+  }
+
+  form {
+    
+    input {
+      border: 1px solid #D4D4D4;
+      border-radius: 50px;
+      color: #333333;
+      font-size: 14px;
+      width: 100%;
+      padding: 7px 15px;
+    }
+
+    button {
+      border: none;
+
+      &:hover {
+        cursor: default;
+      }
+    }
+  }
+
+  p.descricao, p.resultados {
+    font-weight: 400;
+    font-style: italic;
+    font-size: 16px;
+    margin-top: 30px;
+    color: #333333;
+  }
+}
