@@ -1,7 +1,56 @@
-div.imagem-search {
-  padding: 0;
-  
-  > div {
-    height: 200px;
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap');
+
+div.grid-resultados {
+  //padding: 0;
+
+  div.row div.imagem-search {
+    padding: 0;
+    
+    > div.imagem {
+      height: 200px;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+
+      div.add-bg {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(255,255,255, 0.7);
+        opacity: 0;
+        
+        /* todo frame de opção aparece ou desaparece */
+        transition: opacity 0.3s, visibility 0.3s;
+        &:hover, &:focus { opacity: 1; transition: opacity 0.3s, visibility 0.3s;  }
+
+        div.add-button {
+          font-family: 'Nunito', sans-serif;
+          color: #999999;
+          font-weight: 800;
+          font-size: 48px;
+          width: 72px;
+          text-align: center;
+
+          background-color: #ffffff;
+          border-radius: 72px;
+          box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+          
+          cursor: pointer;
+          margin: auto;          
+        }
+
+        &:hover, &:focus {
+          opacity: 1;
+          transition: opacity 0.3s, visibility 0.3s;
+          
+          /* efeito de mouseDown
+          div.add-button {
+            box-shadow: 0 6px 2px rgba(0,0,0,0.5);
+          }
+          */
+        }
+      }
+    }
   }
 }
