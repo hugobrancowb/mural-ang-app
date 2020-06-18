@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { NavbarComponent } from './navbar/navbar.component';
 import { ImgSearchComponent } from './img-search/img-search.component';
 import { ImgMuralComponent } from './img-mural/img-mural.component';
 
 @NgModule({
   declarations: [
-    NavbarComponent,
     ImgSearchComponent,
     ImgMuralComponent,
   ],
@@ -15,7 +13,6 @@ import { ImgMuralComponent } from './img-mural/img-mural.component';
     CommonModule
   ],
   exports: [
-    NavbarComponent,
     ImgSearchComponent,
     ImgMuralComponent,
   ]

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { HomeComponent } from './layouts/home/home.component';
 import { MuralComponent } from './layouts/mural/mural.component';
 
