@@ -1,0 +1,19 @@
+div.mural {
+  margin: 30px auto;
+  
+  h1 {
+    margin: 30px auto;
+    font-size: 30px;
+    font-weight: 700;
+    color: #1A1A1A;
+    text-align: center;
+  }
+
+  p.descricao, p.lista_vazia {
+    font-weight: 400;
+    font-style: italic;
+    font-size: 16px;
+    margin: 30px auto;
+    color: #333333;
+  }
+}
