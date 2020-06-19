@@ -6,7 +6,7 @@
       <div class="imagem" [ngStyle]="{ 'background-image' : 'url(' + image.thumbnailUrl + ')' }">
         <div class="add-bg">
           <!-- a div abaixo terá uma função de add to list -->
-          <div class="add-button">+</div>
+          <div class="add-button" (click)="add(image)">+</div>
         </div>
       </div>
     </div>

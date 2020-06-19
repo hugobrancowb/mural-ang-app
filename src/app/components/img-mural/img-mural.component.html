@@ -7,7 +7,7 @@
         <img [src]="image.thumbnailUrl" alt="" class="imagem">
         <div class="opt-panel">
           <button>Abrir imagem</button>
-          <button>Remover do mural</button>
+          <button (click)="rmv(image)">Remover do mural</button>
         </div>
       </div>
     </div>
