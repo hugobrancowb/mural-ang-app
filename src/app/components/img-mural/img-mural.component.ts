@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MuralDataService } from '../../services/mural-data.service'
+import { Imagem } from 'src/app/models/imagem.model';
 
 @Component({
   selector: 'img-mural',
@@ -9,7 +10,7 @@ import { MuralDataService } from '../../services/mural-data.service'
 
 export class ImgMuralComponent implements OnInit {
 
-  public lista: any[] = [];
+  public lista: Imagem[] = [];
 
   constructor(private _dataservice: MuralDataService) {
     this.lista = _dataservice.get_lista();

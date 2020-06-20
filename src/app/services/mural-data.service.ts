@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
 import { DummyList } from '../services/dummylist';
+import { Imagem } from '../models/imagem.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MuralDataService {
 
-  public search: any[];
-  public lista: any[] = [];
+  public search: Imagem[];
+  public lista: Imagem[] = [];
 
   constructor() { }
 
   /* adiciona o item atual ao Mural */
-  add_lista(obj: any) {
+  add_lista(obj: Imagem) {
     this.lista.push(obj);
   }
 
