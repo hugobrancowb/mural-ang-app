@@ -3,7 +3,7 @@
 
     <div class="col-6 col-lg-3 imagem-search" *ngFor="let image of images">
       <!-- alterar abaixo a url da imagem.  tamanho medium -->
-      <div class="imagem" [ngStyle]="{ 'background-image' : 'url(' + image.thumbnailUrl + ')' }">
+      <div class="imagem" [ngStyle]="{ 'background-image' : 'url(' + image.src.tiny + ')' }">
         <div class="add-bg">
           <!-- a div abaixo terá uma função de add to list -->
           <div class="add-button" (click)="add(image)">+</div>
