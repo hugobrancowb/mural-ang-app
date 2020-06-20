@@ -1,6 +1,5 @@
 import { Component, OnInit} from '@angular/core';
 import { MuralDataService } from '../../services/mural-data.service'
-import { DummyList } from './dummylist';
 
 @Component({
   selector: 'img-search',
@@ -10,9 +9,10 @@ import { DummyList } from './dummylist';
 
 export class ImgSearchComponent implements OnInit {
 
-  public images: any[] = DummyList;
+  public images: any[];
 
   constructor(private _dataservice: MuralDataService) {
+    this.images = _dataservice.search_img('any query');
   }
 
   ngOnInit(): void {

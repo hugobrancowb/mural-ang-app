@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import { DummyList } from './dummylist';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MuralDataService {
 
+  public search: any[];
   public lista: any[] = [
     {
     "albumId": 1,
@@ -36,5 +38,12 @@ export class MuralDataService {
     });
 
     return this.lista;
+  }
+
+  /* busca imagens utilizando API */
+  /* falta implementar o api */
+  search_img(query: string) {
+    this.search = DummyList;
+    return this.search;
   }
 }
