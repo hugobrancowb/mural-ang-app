@@ -8,6 +8,11 @@ $border-radii: 6px;
 div.grid-lista {
   //padding: 0;
 
+  div.lista-vazia h2 {
+    font-size: 20px;
+    color: #B31F1F;
+  }
+
   div.imagem-mural-col {
     padding: 15px;
 
@@ -48,7 +53,10 @@ div.grid-lista {
           font-family: 'Open Sans', sans-serif;
           text-align: center;
 
-          &:first-child { border-bottom-left-radius: $border-radii; }
+          &:first-child {
+            border-bottom-left-radius: $border-radii;
+            border-right: 1px solid rgba(0,0,0,0.07);
+          }
           &:last-child { border-bottom-right-radius: $border-radii; }
 
           &:hover, &:focus {
