@@ -9,10 +9,10 @@ import { MuralDataService } from '../../services/mural-data.service'
 
 export class ImgSearchComponent implements OnInit {
 
-  public images: any[];
+  public search_list: any[];
 
   constructor(private _dataservice: MuralDataService) {
-    this.images = _dataservice.search_img('any query');
+    this.search_list = _dataservice.search_img('');
   }
 
   ngOnInit(): void {

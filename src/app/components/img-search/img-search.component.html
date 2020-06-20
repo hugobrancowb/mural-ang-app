@@ -1,12 +1,12 @@
-<div class="container grid-resultados">
+<div class="container-fluid grid-lista">
   <div class="row">
 
-    <div class="col-6 col-lg-3 imagem-search" *ngFor="let image of images">
-      <!-- alterar abaixo a url da imagem.  tamanho medium -->
-      <div class="imagem" [ngStyle]="{ 'background-image' : 'url(' + image.src.tiny + ')' }">
-        <div class="add-bg">
-          <!-- a div abaixo terá uma função de add to list -->
-          <div class="add-button" (click)="add(image)">+</div>
+    <div class="col-6 col-lg-3 imagem-mural-col" *ngFor="let image of search_list">
+      <div class="imagem-mural-cell">
+        <img [src]="image.src.tiny" alt="" class="imagem">
+        <div class="opt-panel">
+          <!-- link abaixo muda de acordo com o status/id da imagem -->
+          <a class="img-button" (click)="add(image)">Adicionar imagem ao mural</a>
         </div>
       </div>
     </div>

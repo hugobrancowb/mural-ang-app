@@ -1,54 +1,62 @@
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
-div.grid-resultados {
+/* Variables */
+$border-radii: 6px;
+
+div.grid-lista {
   //padding: 0;
 
-  div.row div.imagem-search {
-    padding: 0;
-    
-    > div.imagem {
-      height: 200px;
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
+  div.imagem-mural-col {
+    padding: 15px;
 
-      div.add-bg {
-        display: flex;
-        height: 100%;
+    div.imagem-mural-cell {
+      padding: 0;
+      border-radius: $border-radii;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      transition: box-shadow 0.3s;
+
+      &:focus, &:hover{
+        box-shadow: 0 4px 7px rgba(0,0,0,0.2);
+        transition: box-shadow 0.3s;
+      }
+      
+      img.imagem {
+        border-radius: $border-radii $border-radii 0 0;
         width: 100%;
-        background-color: rgba(255,255,255, 0.7);
-        opacity: 0;
+      }
+      
+      div.opt-panel {
+        display: flex;
+        width: 100%;
+        //position: absolute;
+        //bottom: 0;
         
-        /* todo frame de opção aparece ou desaparece */
-        transition: opacity 0.3s, visibility 0.3s;
-        &:hover, &:focus { opacity: 1; transition: opacity 0.3s, visibility 0.3s;  }
+        a.img-button {
+          cursor: pointer;
 
-        div.add-button {
-          font-family: 'Nunito', sans-serif;
-          color: #999999;
-          font-weight: 800;
-          font-size: 48px;
-          width: 72px;
+          width: 100%;
+          padding: 5px;
+
+          //border: none;
+          background-color: rgba(0, 0, 0, 0.05);
+          transition: background-color 0.3s;
+
+          color: #555555;
+          font-size: 10pt;
+          font-family: 'Open Sans', sans-serif;
           text-align: center;
 
-          background-color: #ffffff;
-          border-radius: 72px;
-          box-shadow: 0 6px 8px rgba(0,0,0,0.15);
-          
-          cursor: pointer;
-          margin: auto;          
-        }
+          &:first-child { border-bottom-left-radius: $border-radii; }
+          &:last-child { border-bottom-right-radius: $border-radii; }
 
-        &:hover, &:focus {
-          opacity: 1;
-          transition: opacity 0.3s, visibility 0.3s;
-          
-          /* efeito de mouseDown
-          div.add-button {
-            box-shadow: 0 6px 2px rgba(0,0,0,0.5);
+          &:hover, &:focus {
+            transition: background-color 0.3s;
+            background-color: rgba(255, 255, 255, 1);
+            color: #000000;
+            text-decoration: none;
           }
-          */
         }
       }
     }
