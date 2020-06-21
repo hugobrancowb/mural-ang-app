@@ -1,18 +1,22 @@
 import { Injectable } from '@angular/core';
-import { createClient } from 'pexels';
+import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 
 import { DummyList } from '../services/dummylist';
 import { Imagem } from '../models/imagem.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class MuralDataService {
 
   public search: any[] = [];
   public lista: any[] = [];
+  public teste;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   /* adiciona o item atual ao Mural */
   add_lista(obj: Imagem) {
@@ -37,13 +41,12 @@ export class MuralDataService {
   /* busca imagens utilizando API */
   /* falta implementar o api */
   search_img(query: string) {
-/*
-    const client = createClient('563492ad6f91700001000001e88bb619b19848698039eed32a602d79');
-    client.photos.search({ query, per_page: 50 }).then(photos => {
-      //this.search = photos;
-      console.log(photos);
-    });
-    */
-    return DummyList;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Authorization": "563492ad6f91700001000001e88bb619b19848698039eed32a602d79"
+      })
+    };
+
+    return this.http.get('https://api.pexels.com/v1/search?query=' + query + '&per_page=50', httpOptions);
   }
 }

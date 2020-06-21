@@ -12,14 +12,14 @@ import { MuralDataService } from '../../services/mural-data.service'
 
 export class HomeComponent implements OnInit {
   
-  public search_list: Imagem[];
+  public search_list: Imagem[] = [];
+  public teste;
 
   formsearch = new FormGroup({
     query: new FormControl('')
   });
 
   constructor(private _dataservice: MuralDataService) {
-    this.search_list = _dataservice.search_img('');
   }
 
   ngOnInit(): void {
@@ -27,6 +27,10 @@ export class HomeComponent implements OnInit {
 
   search() {
     console.log( (this.formsearch.value).query );
+    this._dataservice.search_img( (this.formsearch.value).query ).subscribe(response => {
+      this.teste = response;
+      this.search_list = this.teste.photos;
+    });
   }
 
   add(obj) {
