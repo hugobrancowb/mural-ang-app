@@ -1,7 +1,10 @@
 <div class="container main">
   <h1>Pesquisar imagens</h1>
-  <form class="input-group">
-    <input class="form-control" type="text" placeholder="Ex: office">
+  <form [formGroup]="formsearch" class="input-group" (ngSubmit)="search()">
+    <input formControlName="query" type="text" placeholder="Ex: office">
+    <div class="input-group-append">
+      <div class="input-group-text" (click)="search()">buscar</div>
+    </div>
   </form>
   <p class="descricao">Faça uma pesquisa com o termo desejado em inglês para gerar seu mural de imagens inicial.</p>
 </div>

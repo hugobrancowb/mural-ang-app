@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { createClient } from 'pexels';
+
 import { DummyList } from '../services/dummylist';
 import { Imagem } from '../models/imagem.model';
 
@@ -7,8 +9,8 @@ import { Imagem } from '../models/imagem.model';
 })
 export class MuralDataService {
 
-  public search: Imagem[];
-  public lista: Imagem[] = [];
+  public search: any[] = [];
+  public lista: any[] = [];
 
   constructor() { }
 
@@ -24,7 +26,6 @@ export class MuralDataService {
 
   /* remove o item da lista baseado em sua id */
   rmv_lista(id: number) {
-    console.log(this.lista);
     
     this.lista = this.lista.filter(e => {
       return e.id != id;
@@ -36,7 +37,13 @@ export class MuralDataService {
   /* busca imagens utilizando API */
   /* falta implementar o api */
   search_img(query: string) {
-    this.search = DummyList;
-    return this.search;
+/*
+    const client = createClient('563492ad6f91700001000001e88bb619b19848698039eed32a602d79');
+    client.photos.search({ query, per_page: 50 }).then(photos => {
+      //this.search = photos;
+      console.log(photos);
+    });
+    */
+    return DummyList;
   }
 }

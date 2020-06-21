@@ -4,6 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule }   from '@angular/forms';
+
 import { LayoutsModule } from './layouts/layouts.module';
 import { ComponentsModule } from './components/components.module';
 
@@ -15,6 +17,7 @@ import { ComponentsModule } from './components/components.module';
     BrowserModule,
     AppRoutingModule,
     NgbModule,  
+    ReactiveFormsModule,
     LayoutsModule,
     ComponentsModule
   ],
