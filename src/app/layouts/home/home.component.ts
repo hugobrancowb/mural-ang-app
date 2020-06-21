@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-//import { ReactiveFormsModule }   from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
-//import { MuralDataService } from '../../services/mural-data.service'
+
+import { Imagem } from 'src/app/models/imagem.model';
+import { MuralDataService } from '../../services/mural-data.service'
 
 @Component({
   selector: 'app-home',
@@ -10,11 +11,15 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 
 export class HomeComponent implements OnInit {
+  
+  public search_list: Imagem[];
+
   formsearch = new FormGroup({
     query: new FormControl('')
   });
 
-  constructor() {
+  constructor(private _dataservice: MuralDataService) {
+    this.search_list = _dataservice.search_img('');
   }
 
   ngOnInit(): void {
@@ -22,6 +27,10 @@ export class HomeComponent implements OnInit {
 
   search() {
     console.log( (this.formsearch.value).query );
+  }
+
+  add(obj) {
+    this._dataservice.add_lista(obj);
   }
 
 }
