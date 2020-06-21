@@ -4,7 +4,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { HomeComponent } from './home/home.component';
 import { MuralComponent } from './mural/mural.component';
-import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +12,6 @@ import { ComponentsModule } from '../components/components.module';
   ],
   imports: [
     CommonModule,
-    ComponentsModule,
     ReactiveFormsModule,
   ],
   exports: [

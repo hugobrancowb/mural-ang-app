@@ -1,3 +1,10 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+/* Variables */
+$border-radii: 6px;
+
 div.mural {
   margin: 30px auto;
   
@@ -15,5 +22,71 @@ div.mural {
     font-size: 16px;
     margin: 30px auto;
     color: #333333;
+  }
+}
+
+div.grid-lista {
+  //padding: 0;
+
+  div.lista-vazia h2 {
+    font-size: 20px;
+    color: #B31F1F;
+  }
+
+  div.imagem-mural-col {
+    padding: 15px;
+
+    div.imagem-mural-cell {
+      padding: 0;
+      border-radius: $border-radii;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      transition: box-shadow 0.3s;
+
+      &:focus, &:hover{
+        box-shadow: 0 4px 7px rgba(0,0,0,0.2);
+        transition: box-shadow 0.3s;
+      }
+      
+      img.imagem {
+        border-radius: $border-radii $border-radii 0 0;
+        width: 100%;
+      }
+      
+      div.opt-panel {
+        display: flex;
+        width: 100%;
+        //position: absolute;
+        //bottom: 0;
+        
+        a.img-button {
+          cursor: pointer;
+
+          width: 50%;
+          padding: 5px;
+
+          //border: none;
+          background-color: rgba(0, 0, 0, 0.05);
+          transition: background-color 0.3s;
+
+          color: #555555;
+          font-size: 10pt;
+          font-family: 'Open Sans', sans-serif;
+          text-align: center;
+
+          &:first-child {
+            border-bottom-left-radius: $border-radii;
+            border-right: 1px solid rgba(0,0,0,0.07);
+          }
+          &:last-child { border-bottom-right-radius: $border-radii; }
+
+          &:hover, &:focus {
+            transition: background-color 0.3s;
+            background-color: rgba(255, 255, 255, 1);
+            color: #000000;
+            text-decoration: none;
+          }
+        }
+      }
+    }
   }
 }
