@@ -34,18 +34,17 @@ div.main {
       cursor: pointer;
     }
   }
+}
 
-  p.descricao, p.resultados {
+div.grid-lista {
+  
+  p.descricao {
     font-weight: 400;
     font-style: italic;
     font-size: 16px;
     margin: 30px auto;
     color: #333333;
   }
-}
-
-div.grid-lista {
-  //padding: 0;
 
   div.imagem-mural-col {
     padding: 15px;

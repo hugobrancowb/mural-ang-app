@@ -6,23 +6,25 @@
       <div class="input-group-text" (click)="search()">buscar</div>
     </div>
   </form>
-  <p class="descricao">Faça uma pesquisa com o termo desejado em inglês para gerar seu mural de imagens inicial.</p>
 </div>
 
 <!-- grid do search -->
 <div class="container-fluid grid-lista">
-  <div class="row">
+  <div *ngIf="search_list.length > 0 then listaPreench else listaVazia"></div>
+  <ng-template #listaVazia><p class="descricao">Faça uma pesquisa com o termo desejado em inglês para gerar seu mural de imagens inicial.</p></ng-template>
+  <ng-template #listaPreench>
+    <div class="row">
 
-    <div class="col-6 col-lg-3 imagem-mural-col" *ngFor="let image of search_list">
-      <div class="imagem-mural-cell">
-        <img [src]="image.src.tiny" alt="" class="imagem">
-        <div class="opt-panel">
-          <!-- link abaixo muda de acordo com o status/id da imagem -->
-          <a class="img-button" (click)="add(image)">Adicionar imagem ao mural</a>
+      <div class="col-6 col-lg-3 imagem-mural-col" *ngFor="let image of search_list">
+        <div class="imagem-mural-cell">
+          <img [src]="image.src.tiny" alt="" class="imagem">
+          <div class="opt-panel">
+            <!-- link abaixo muda de acordo com o status/id da imagem -->
+            <a class="img-button" (click)="add(image)">Adicionar imagem ao mural</a>
+          </div>
         </div>
       </div>
+
     </div>
-
-  </div>
+  </ng-template>
 </div>
-
