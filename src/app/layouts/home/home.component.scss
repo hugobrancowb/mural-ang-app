@@ -26,6 +26,8 @@ div.main {
       color: #333333;
       font-size: 14px;
       padding: 7px 15px;
+
+      &:focus { outline: none; }
     }
 
     div.input-group-append div {
