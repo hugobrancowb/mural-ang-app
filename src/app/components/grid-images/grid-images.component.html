@@ -1,0 +1,15 @@
+<div class="container-fluid grid-lista">
+  <div class="row">
+    
+    <div class="imagem-mural-col" *ngFor="let image of image_list">
+      <div class="imagem-mural-cell">
+        <img [src]="image.src.tiny" alt="" class="imagem">
+        <div class="opt-panel">
+          <!-- link abaixo muda de acordo com o status/id da imagem -->
+          <a class="img-button" (click)="add(image)">Adicionar imagem ao mural</a>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>

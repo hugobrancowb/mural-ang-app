@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule }   from '@angular/forms';
 
 import { LayoutsModule } from './layouts/layouts.module';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { LayoutsModule } from './layouts/layouts.module';
     NgbModule,
     ReactiveFormsModule,
     LayoutsModule,
+    ComponentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

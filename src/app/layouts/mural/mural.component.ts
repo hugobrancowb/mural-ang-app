@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MuralDataService } from '../../services/mural-data.service'
 import { Imagem } from 'src/app/models/imagem.model';
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 import { Imagem } from 'src/app/models/imagem.model';
@@ -35,11 +35,6 @@ export class HomeComponent {
       this.search_list = res.photos; /* atualiza a busca da pagina */
       this._dataservice.search = this.search_list; /* salva os resultados no serviço para obte-los novamente sem precisar da API */
     });
-  }
-
-  add(obj) {
-    console.log((this.formsearch.value).query);
-    this._dataservice.add_lista(obj);
   }
 
 }
