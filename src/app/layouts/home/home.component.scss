@@ -38,6 +38,8 @@ div.main {
 
 div.grid-lista {
   
+  div.row { justify-content: center; }
+  
   p.descricao {
     font-weight: 400;
     font-style: italic;
@@ -68,21 +70,20 @@ div.grid-lista {
       div.opt-panel {
         display: flex;
         width: 100%;
-        //position: absolute;
-        //bottom: 0;
         
         a.img-button {
           cursor: pointer;
 
           width: 100%;
           padding: 5px;
+          @media (min-width: 576px) { padding: 12px 5px; }
 
-          //border: none;
           background-color: rgba(0, 0, 0, 0.05);
           transition: background-color 0.3s;
 
           color: #555555;
           font-size: 10pt;
+          @media (min-width: 576px) { font-size: 11pt; }
           font-family: 'Open Sans', sans-serif;
           text-align: center;
 
