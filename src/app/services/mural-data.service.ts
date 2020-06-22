@@ -11,8 +11,9 @@ import { Observable } from 'rxjs';
 
 export class MuralDataService {
 
-  public search: Array<Imagem> = [];
-  public lista: Array<Imagem> = [];
+  public search: Array<Imagem> = []; /* lista de resultados da busca utilizando o api */
+  public lista: Array<Imagem> = []; /* lista de resultados da busca salvos no mural do user */
+  public last_query: string = ''; /* ultima busca efetuada, para ficar salva na barra de busca */
 
   constructor(private http: HttpClient) {
   }
@@ -52,5 +53,5 @@ export class MuralDataService {
 
     return this.http.get('https://api.pexels.com/v1/search?query=' + query + '&per_page=20', httpOptions);
   }
-  
+
 }
