@@ -18,9 +18,5 @@ export class MuralComponent {
 
   ngOnInit(): void {
   }
-  
-  rmv(obj) {
-    this.lista = this._dataservice.rmv_lista(obj.id);
-  }
 
 }

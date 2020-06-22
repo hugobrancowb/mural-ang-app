@@ -10,15 +10,20 @@ import { Imagem } from 'src/app/models/imagem.model';
 export class GridImagesComponent {
 
   @Input() image_list: Array<Imagem>;
+  @Input() isMural: Boolean;
 
   constructor(private _dataservice: MuralDataService) {
   }
-
+  
   ngOnInit(): void {
   }
-
+  
   add(obj) {
     this._dataservice.add_lista(obj);
+  }
+
+  rmv(obj) {
+    this.image_list = this._dataservice.rmv_lista(obj.id);
   }
 
 }

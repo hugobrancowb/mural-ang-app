@@ -3,30 +3,21 @@
   <p class="descricao">Aqui você pode abrir as imagens que você selecionou ou removê-las de sua lista.</p>
 </div>
 
-<div class="container-fluid grid-lista">
-  <div *ngIf="lista.length > 0 then listaPreench else listaVazia"></div>
+<div *ngIf="lista.length > 0 then listaPreench else listaVazia"></div>
 
-    <ng-template #listaPreench>
-      <div class="row">
-        <div class="imagem-mural-col" *ngFor="let image of lista">
-          <div class="imagem-mural-cell">
-            <!-- alterar abaixo a url da imagem. dimensao quadradada -->
-            <img [src]="image.src.tiny" alt="" class="imagem">
-            <div class="opt-panel">
-              <a class="img-button" [href]="image.url" target="_blank">Abrir imagem</a>
-              <a class="img-button" (click)="rmv(image)">Remover do mural</a>
-            </div>
-          </div>
-        </div>
+<ng-template #listaPreench>
+  
+  <!-- grid do mural -->
+  <grid-images [image_list]="lista" [isMural]="true"></grid-images>  
+    
+</ng-template>
+    
+<ng-template #listaVazia>
+    <div class="container-fluid grid-lista">
+    <div class="row lista-vazia">
+      <div class="col-12">
+        <h2>Seu mural está vazio. realize uma pesquisa para adicionar imagens à sua coleção.</h2>
       </div>
-    </ng-template>
-
-    <ng-template #listaVazia>
-      <div class="row lista-vazia">
-        <div class="col-12">
-          <h2>Seu mural está vazio. realize uma pesquisa para adicionar imagens à sua coleção.</h2>
-        </div>
-      </div>
-    </ng-template>
-
-</div>
+    </div>
+  </div>
+</ng-template>
