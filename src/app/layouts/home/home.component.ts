@@ -10,30 +10,32 @@ import { MuralDataService } from '../../services/mural-data.service'
   styleUrls: ['./home.component.scss']
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   
-  public search_list: Imagem[] = [];
-  public teste;
+  public search_list: Array<Imagem>;
 
+  /* grupo criado para o Form de busca */
   formsearch = new FormGroup({
     query: new FormControl('')
   });
 
   constructor(private _dataservice: MuralDataService) {
+    /* precisa do constructor para obter o valor novamente qnd sair e voltar para a pagina */
+    this.search_list = this._dataservice.get_search();
   }
 
   ngOnInit(): void {
   }
 
   search() {
-    console.log( (this.formsearch.value).query );
-    this._dataservice.search_img( (this.formsearch.value).query ).subscribe(response => {
-      this.teste = response;
-      this.search_list = this.teste.photos;
+    this._dataservice.search_img( (this.formsearch.value).query ).subscribe(res => {
+      this.search_list = res.photos; /* atualiza a busca da pagina */
+      this._dataservice.search = this.search_list; /* salva os resultados no serviço para obte-los novamente sem precisar da API */
     });
   }
 
   add(obj) {
+    console.log((this.formsearch.value).query);
     this._dataservice.add_lista(obj);
   }
 

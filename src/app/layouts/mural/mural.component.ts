@@ -8,9 +8,9 @@ import { Imagem } from 'src/app/models/imagem.model';
   styleUrls: ['./mural.component.scss']
 })
 
-export class MuralComponent implements OnInit {
+export class MuralComponent {
 
-  public lista: Imagem[] = [];
+  public lista: Array<Imagem>;
 
   constructor(private _dataservice: MuralDataService) {
     this.lista = _dataservice.get_lista();

@@ -7,8 +7,6 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule }   from '@angular/forms';
 
-//import { createClient } from 'pexels';
-
 import { LayoutsModule } from './layouts/layouts.module';
 
 @NgModule({
@@ -19,7 +17,7 @@ import { LayoutsModule } from './layouts/layouts.module';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    NgbModule,  
+    NgbModule,
     ReactiveFormsModule,
     LayoutsModule,
   ],
