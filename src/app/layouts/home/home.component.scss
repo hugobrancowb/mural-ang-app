@@ -13,6 +13,7 @@ $darkpurple: #241E4E;
 
 div.main {
   width: 100%;
+  min-width: 100%;
   padding: 30px 15px;
   background-color: $green;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
@@ -26,8 +27,9 @@ div.main {
   }
 
   form {
-    margin: 30px auto;
+    margin: 30px auto 10px auto;
     width: 100%;
+    min-width: 100%;
     justify-content: center;
     
     input {
@@ -55,7 +57,7 @@ div.main {
       font-weight: 400;
       font-style: italic;
       font-size: 14px;
-      margin: 30px auto 0px auto;
+      margin: 20px auto 0px auto;
       color: #ffffff;
     }
   }

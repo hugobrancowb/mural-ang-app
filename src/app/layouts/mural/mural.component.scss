@@ -13,6 +13,7 @@ $darkpurple: #241E4E;
 
 div.mural {
   width: 100%;
+  min-width: 100%;
   padding: 30px 15px;
   background-color: $green;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
@@ -31,6 +32,10 @@ div.mural {
     font-size: 14px;
     margin: 30px auto 0px auto;
     color: #ffffff;
+    text-align: center;
+    @media (min-width: 960px) {
+      font-size: 16px;
+    }
   }
 }
 
@@ -44,5 +49,9 @@ div.lista-vazia {
     font-style: italic;
     font-size: 16px;
     color: #222222;
+    text-align: center;
+    @media (min-width: 960px) {
+      font-size: 18px;
+    }
   }
 }
