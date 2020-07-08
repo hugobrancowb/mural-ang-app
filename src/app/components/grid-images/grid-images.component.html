@@ -1,7 +1,7 @@
 <div class="container-fluid grid-lista">
   <div class="row">
     
-    <div class="imagem-mural-col" *ngFor="let image of image_list">
+    <div class="imagem-mural-col col-6 col-sm-4 col-lg-3 col-xl-2" *ngFor="let image of image_list">
       <div class="imagem-mural-cell">
         <img [src]="image.src.tiny" alt="" class="imagem">
         <div class="opt-panel">
@@ -10,12 +10,12 @@
           <div *ngIf="isMural == false then homeGrid else muralGrid"></div>
           
           <ng-template #homeGrid>
-            <a class="img-button" (click)="add(image)">Adicionar imagem ao mural</a>
+            <a class="img-button add" (click)="add(image)"><i class="fas fa-plus-circle"></i></a>
           </ng-template>
 
           <ng-template #muralGrid>
-            <a class="img-button right-border" [href]="image.url" target="_blank">Abrir imagem</a>
-            <a class="img-button" (click)="rmv(image)">Remover do mural</a>
+            <a class="img-button right-border open" [href]="image.url" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+            <a class="img-button remove" (click)="rmv(image)"><i class="fas fa-trash"></i></a>
           </ng-template>
 
         </div>
