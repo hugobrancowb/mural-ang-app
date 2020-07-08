@@ -1,9 +1,17 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap');
+
 /* Colors */
-$navcolor: #BCBCBC;
+$orange: #EF8354;
+$green: #0F8B8D;
+$darkpurple: #241E4E;
 
 nav {
-  background-color: $navcolor;
   display: flex;
+  
+  background-color: $orange;
+
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
 
   div {
     margin: auto;
@@ -15,11 +23,22 @@ nav {
         margin: 0 10px;
 
         a {
-          font-size: 14px;
-          font-weight: 600;
+          font-family: 'Nunito Sans', sans-serif;
+          font-weight: 700;
+          font-size: 12px;
+          text-transform: uppercase;
+          color: #222222;
           
-          &, &:visited { color: #333; }
-          &:hover{color:black}
+          &, &:visited {
+            color: #222222;
+            text-decoration: none;
+          }
+          
+          &:hover, &.active {
+            color:#222222;
+            text-decoration: underline;
+            text-underline-offset: 7px;
+          }
         }
       }
     }

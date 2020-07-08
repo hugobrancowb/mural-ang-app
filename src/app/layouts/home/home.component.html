@@ -6,16 +6,18 @@
       <div class="input-group-text" (click)="search()">buscar</div>
     </div>
   </form>
+  
+  <!-- grid do search: if/else -->
+  <div *ngIf="search_list.length == 0 then listaVazia"></div>
+  <ng-template #listaVazia>
+    <div class="container-fluid lista-vazia">
+      <p class="descricao">Faça uma pesquisa com o termo desejado (em inglês) para gerar seu mural de imagens inicial.</p>
+    </div>
+  </ng-template>
 </div>
 
-<!-- grid do search -->
-<div *ngIf="search_list.length > 0 then listaPreench else listaVazia"></div>
-<ng-template #listaVazia>
-  <div class="container-fluid grid-lista">
-    <p class="descricao">Faça uma pesquisa com o termo desejado em inglês para gerar seu mural de imagens inicial.</p>
-  </div>
-</ng-template>
+<!-- grid do search: if/else -->
+<div *ngIf="search_list.length > 0 then listaPreench"></div>
 <ng-template #listaPreench>
-    <!-- grid do search -->
     <grid-images [image_list]="search_list" [isMural]="false"></grid-images>    
 </ng-template>

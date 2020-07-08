@@ -1,26 +1,48 @@
 /* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap');
 //@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap');
 //@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 /* Variables */
 //$border-radii: 6px;
 
+/* Colors */
+$orange: #EF8354;
+$green: #0F8B8D;
+$darkpurple: #241E4E;
+
 div.mural {
-  margin: 30px auto;
+  width: 100%;
+  padding: 30px 15px;
+  background-color: $green;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
   
   h1 {
-    margin: 30px auto;
-    font-size: 30px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 28px;
     font-weight: 700;
-    color: #1A1A1A;
     text-align: center;
+    color: #ffffff;
   }
 
   p.descricao, p.lista_vazia {
     font-weight: 400;
     font-style: italic;
+    font-size: 14px;
+    margin: 30px auto 0px auto;
+    color: #ffffff;
+  }
+}
+
+div.lista-vazia {
+  padding: 30px 15px;
+
+  div.col-12 {padding: 0;}
+
+  h2 {
+    font-weight: 400;
+    font-style: italic;
     font-size: 16px;
-    margin: 30px auto;
-    color: #333333;
+    color: #222222;
   }
 }

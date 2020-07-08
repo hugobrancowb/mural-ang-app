@@ -1,12 +1,11 @@
 <nav class="navbar navbar-expand-lg">
   <div class="" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/" routerLink="/">Pesquisar <span class="sr-only">(current)</span></a>
-        <!-- sr-only = screen-reader; voltar a essa parte mais à frente -->
+      <li class="nav-item">
+        <a class="nav-link" href="/" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Pesquisar</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/mural" routerLink="/mural">Seu Mural</a>
+        <a class="nav-link" href="/mural" routerLink="/mural" routerLinkActive="active">Seu Mural</a>
       </li>
     </ul>
   </div>
