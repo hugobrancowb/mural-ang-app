@@ -21,15 +21,18 @@ export class MuralDataService {
   /* adiciona o item atual ao Mural */
   add_lista(obj: Imagem) {
     this.lista.push(obj);
+    this.update_list(); /* update 'in_mural' boolean value */
   }
 
   /* retorna a lista completa do mural */
   get_lista() {
+    this.update_list(); /* update 'in_mural' boolean value */
     return this.lista;
   }
   
   /* retorna a lista de resultados */
   get_search() {
+    this.update_list(); /* update 'in_mural' boolean value */
     return this.search;
   }
 
@@ -40,6 +43,7 @@ export class MuralDataService {
       return e.id != id;
     });
 
+    this.update_list(); /* update 'in_mural' boolean value */
     return this.lista;
   }
 
@@ -51,7 +55,23 @@ export class MuralDataService {
       })
     };
 
-    return this.http.get('https://api.pexels.com/v1/search?query=' + query + '&per_page=20', httpOptions);
+    return this.http.get('https://api.pexels.com/v1/search?query=' + query + '&per_page=24', httpOptions);
+  }
+
+  /* update 'in_mural' boolean value */
+  update_list() {
+    this.search.map(el_search => {
+      var flag = false;
+
+      this.lista.map(el_list => {
+        if (el_search.id === el_list.id) {
+          flag = true;
+          console.log('flag true');
+        }
+      });
+
+      el_search.in_mural = flag;
+    })
   }
 
 }
