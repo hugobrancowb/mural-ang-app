@@ -34,6 +34,7 @@ div.grid-lista {
       box-shadow: 0 2px 4px rgba(0,0,0,0.2);
       transition: box-shadow 0.3s;
 
+      
       &:focus, &:hover{
         box-shadow: 0 4px 7px rgba(0,0,0,0.2);
         transition: box-shadow 0.3s;
@@ -42,6 +43,16 @@ div.grid-lista {
       img.imagem {
         border-radius: $border-radii $border-radii 0 0;
         width: 100%;
+      }
+      
+      /* borda invisivel para nao mexer no layout ao add imagem à lista */
+      //border-radius: 8px; /* o raio é maior aqui para encaixar melhor na imagem */
+      //border: solid 4px rgba(0,0,0,0);
+      //background-color: rgba(0,0,0,0);
+      &.selected { /* classe que indica que a imagem já está na lista/mural */
+        border-radius: 8px; /* o raio é maior aqui para encaixar melhor na imagem */
+        border: solid 4px $green;
+        background-color: $green;
       }
       
       div.opt-panel {
@@ -57,6 +68,7 @@ div.grid-lista {
           background-color: rgba(255, 255, 255, 1);
           &.right-border { border-right: 1px solid rgba(0,0,0,0.07); }
 
+          /* cores botões */
           &.add{color: $green;}          
           &.remove{color: $red;}
           &.open{color: $purple;}
@@ -66,9 +78,8 @@ div.grid-lista {
           font-family: 'Open Sans', sans-serif;
           text-align: center;
 
-          &:first-child {
-            border-bottom-left-radius: $border-radii;
-          }
+          /* as bordas arredondadas abaixo funcionam qnd temos um ou dois botões dentro da div opt-panel */
+          &:first-child { border-bottom-left-radius: $border-radii; }
           &:last-child { border-bottom-right-radius: $border-radii; }
 
           &:hover, &:focus {
