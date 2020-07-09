@@ -1,5 +1,6 @@
 export class Imagem {
   public id: number;
+  public in_mural: boolean = false;
   public width: number;
   public height: number;
   public url: string;
