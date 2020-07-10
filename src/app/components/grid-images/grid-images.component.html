@@ -6,14 +6,15 @@
         <img [src]="image.src.tiny" alt="" class="imagem">
         <div class="opt-panel">
           
-          <!-- botoes mudam de acordo com boolean isMural -->
-          <div *ngIf="isMural == false then homeGrid else muralGrid"></div>
+          <!-- botoes mudam de acordo com boolean image.in_mural -->
+          <div *ngIf="image.in_mural == false then not_in_mural else in_mural"></div>
           
-          <ng-template #homeGrid>
+          <ng-template #not_in_mural>
+            <a class="img-button right-border open" [href]="image.url" target="_blank"><i class="fas fa-external-link-alt"></i></a>
             <a class="img-button add" (click)="add(image)"><i class="fas fa-plus-circle"></i></a>
           </ng-template>
-
-          <ng-template #muralGrid>
+          
+          <ng-template #in_mural>
             <a class="img-button right-border open" [href]="image.url" target="_blank"><i class="fas fa-external-link-alt"></i></a>
             <a class="img-button remove" (click)="rmv(image)"><i class="fas fa-trash"></i></a>
           </ng-template>

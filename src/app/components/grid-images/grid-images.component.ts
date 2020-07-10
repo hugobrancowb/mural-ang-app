@@ -23,7 +23,8 @@ export class GridImagesComponent {
   }
 
   rmv(obj) {
-    this.image_list = this._dataservice.rmv_lista(obj.id);
+    this._dataservice.rmv_lista(obj.id);
+    this.image_list = (this.isMural) ? this._dataservice.get_lista() : this._dataservice.get_search(); /* atualiza a lista atual de acordo com a página (search/mural) */
   }
 
 }
