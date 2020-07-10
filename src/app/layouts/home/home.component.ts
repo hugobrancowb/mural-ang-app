@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 
 import { Imagem } from 'src/app/models/imagem.model';
 import { MuralDataService } from '../../services/mural-data.service'
+import { Placeholder } from 'src/app/models/placeholder';
 
 @Component({
   selector: 'app-home',
@@ -29,6 +30,8 @@ export class HomeComponent {
   }
 
   search() {
+    this.search_list = Placeholder; /* cria grid vazia como placeholder enquanto o API realiza a busca */
+
     const busca_query = (this.formsearch.value).query;
     this._dataservice.search_img( busca_query ).subscribe(res => {
       this._dataservice.last_query = busca_query;
