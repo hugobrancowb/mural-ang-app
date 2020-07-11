@@ -1,10 +1,5 @@
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap');
-//@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap');
-//@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
-/* Variables */
-//$border-radii: 6px;
 
 /* Colors */
 $orange: #EF8354;
@@ -59,6 +54,7 @@ div.main {
       font-size: 14px;
       margin: 20px auto 0px auto;
       color: #ffffff;
+      text-align: center;
     }
   }
 }

@@ -66,12 +66,26 @@ export class MuralDataService {
       this.lista.map(el_list => {
         if (el_search.id === el_list.id) {
           flag = true;
-          console.log('flag true');
         }
       });
 
       el_search.in_mural = flag;
-    })
+    });
+
+    /* considerando que esta função é chamada sempre que há uma alteração na lista-mural, aproveitamos o momento para atualizar o cookie */
+    this.set_cookies();
+  }
+  
+  set_cookies() {
+    if(this.lista.length > 0) { /* essa condicional evita que o cookie inicie vazio numa nova sessão */
+      const date = new Date();
+      
+      // Set it expire in 7 days
+      date.setTime(date.getTime() + (7 * 24 * 60 * 60 * 1000));
+      
+      // Set it
+      document.cookie = "lista"+"="+JSON.stringify(this.lista)+"; expires="+date.toUTCString()+"; path=/";
+    }
   }
 
 }
