@@ -19,7 +19,9 @@ export class GridImagesComponent {
   }
   
   add(obj) {
-    this._dataservice.add_lista(obj);
+    if(obj.photographer_url !== 'https://muralapp.me') {
+      this._dataservice.add_lista(obj);
+    }
   }
 
   rmv(obj) {

@@ -10,7 +10,17 @@
           <div *ngIf="image.in_mural == false then not_in_mural else in_mural"></div>
           
           <ng-template #not_in_mural>
-            <a class="img-button right-border open" [href]="image.url" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+
+            <!-- condicional para nao abrir nova janela se nao existir um link -->
+            <div *ngIf="image.url !== '' then url_ok else url_not_ok"></div>
+            <ng-template #url_ok>
+              <a class="img-button right-border open" [href]="image.url" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+            </ng-template>
+            <ng-template #url_not_ok>
+              <!-- placeholders nao possuem link e o botão é decorativo -->
+              <a class="img-button right-border open"><i class="fas fa-external-link-alt"></i></a>
+            </ng-template>
+
             <a class="img-button add" (click)="add(image)"><i class="fas fa-plus-circle"></i></a>
           </ng-template>
           
