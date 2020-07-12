@@ -61,12 +61,14 @@ export class MuralDataService {
       el_search.in_mural = flag;
     });
 
-    /* considerando que esta função é chamada sempre que há uma alteração na lista-mural, aproveitamos o momento para atualizar o cookie */
+    /* considerando que esta função é chamada sempre que há uma alteração na lista-mural, aproveitamos o momento para atualizar o cookie */    
+    /* COOKIE DISABLED
     this.set_cookies();
+    */
   }
   
   set_cookies() {
-    if(this.lista.length > 0) { /* essa condicional evita que o cookie inicie vazio numa nova sessão */
+    if(this.lista.length < 0) { /* essa condicional evita que o cookie inicie vazio numa nova sessão */
       const date = new Date();
       
       // Set it expire in 7 days

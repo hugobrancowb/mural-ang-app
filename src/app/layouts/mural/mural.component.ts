@@ -17,6 +17,7 @@ export class MuralComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    /* COOKIE DISABLED
     const value = "; " + document.cookie;
     var getcookie = value.split("; " + "lista" + "=");
 
@@ -29,6 +30,7 @@ export class MuralComponent implements OnInit {
       }
 
     }
+    */
   }
 
   /* GET para obter a lista desejada à partir de um id */
