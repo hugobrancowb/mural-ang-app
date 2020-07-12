@@ -3,7 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
 const path = require('path');
-//const mysql = require('mysql');
+const mysql = require('mysql');
 
 app.use(cors({origin: true, credentials: true}));
 
@@ -30,59 +30,59 @@ app.get('/mural:id', function (req, res) {
 */
 
 /* GET Method para obter a lista desejada à partir de um id */
-app.get('/getmural', function (req, res) {
+app.get('/get-mural', function (req, res) {
 
-  console.log('numero id: ' + req.query.id);
+  let pool;
+  var id = req.query.id;
 
-  var dummylist = [
-    {
-      "id": 20114422,
-      "in_mural": false, 
-      "width": 3024,
-      "height": 3024,
-      "url": "https://www.pexels.com/photo/brown-rocks-during-golden-hour-2014422/",
-      "photographer": "Joey Farina",
-      "photographer_url": "https://www.pexels.com/@joey",
-      "photographer_id": 680589,
-      "src": {
-        "original": "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg",
-        "large2x": "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-        "large": "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-        "medium": "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&h=350",
-        "small": "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&h=130",
-        "portrait": "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
-        "landscape": "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
-        "tiny": "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280"
-      }
-    },
-    {
-      "id": 20142,
-      "in_mural": false, 
-      "width": 3024,
-      "height": 3024,
-      "url": "https://www.pexels.com/photo/brown-rocks-during-golden-hour-2014422/",
-      "photographer": "Joey Farina",
-      "photographer_url": "https://www.pexels.com/@joey",
-      "photographer_id": 680589,
-      "src": {
-        "original": "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg",
-        "large2x": "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-        "large": "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-        "medium": "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&h=350",
-        "small": "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&h=130",
-        "portrait": "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
-        "landscape": "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
-        "tiny": "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280"
-      }
-    }];
+  const createPool = async () => {
+    pool = await mysql.createPool({
+      user: '***',
+      password: '***',
+      database: '***',
+    });
+  };
 
-  res.send(dummylist);
+  createPool().then(async function () {
+    try {
+      const newsQuery = await pool.query(`SELECT mural_str from share_mural WHERE id = ` + id, function(err, results, fields){
+        var mural_obj = JSON.parse(results); /* converte para objeto */
+        res.send(mural_obj); /* envia o mural em objeto para o front */
+      });
+    } catch (err) {
+      console.log(err);
+    }
+
+  });
 });
 
 /* POST Method para salvar o mural em um banco de dados */
 app.post('/share-mural', function(req, res) {
-  console.log(req.body.mural); /* isso é uma Array<Imagem> */
-  res.send({id: 4579}); /* retorna uma unique ID para resgatar a lista posteriormente */
+
+  let pool;
+  var id = 55;
+  var post_response = false;
+  var mural_str = JSON.stringify(req.body.mural);
+
+  const createPool = async () => {
+    pool = await mysql.createPool({
+      user: '***',
+      password: '***',
+      database: '***',
+    });
+  };
+
+  createPool().then(async function () {
+    try {
+      const newsQuery = await pool.query(`INSERT INTO share_mural(` + id + `, ` + mural_str + `, NOW());`);
+      post_response = true;
+    } catch (err) {
+      console.log(err);
+    }
+
+    res.send({id: id, status: post_response}); /* retorna uma unique ID para resgatar a lista posteriormente */
+  });
+
 });
 
 /* porta local */

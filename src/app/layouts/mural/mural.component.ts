@@ -36,6 +36,8 @@ export class MuralComponent implements OnInit {
   /* GET para obter a lista desejada à partir de um id */
   getmural(id: number) {
     this._dataservice.get_mural_db(id).subscribe( (res: Array<Imagem>) => {
+      console.log('teste de response do get:');
+      console.log(res);
       var mural = res; /* salva os resultados no serviço para obte-los novamente sem precisar da API */
 
       mural.map(el => {
@@ -52,6 +54,7 @@ export class MuralComponent implements OnInit {
   postmural() {
     this._dataservice.post_mural_db(this.lista).subscribe( (res: any) => {
       console.log(res.id);
+      console.log(res.status);
     });
   }
 
