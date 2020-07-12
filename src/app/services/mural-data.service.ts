@@ -95,4 +95,10 @@ export class MuralDataService {
     return this.http.get('http://127.0.0.1:3000/getmural?id=' + id);
   }
 
+  /* [POST] salva o mural em um banco de dados */
+  post_mural_db(mural: Array<Imagem>) {
+    const body = { mural: this.lista }
+    return this.http.post<any>('http://127.0.0.1:3000/share-mural', body);
+  }
+
 }

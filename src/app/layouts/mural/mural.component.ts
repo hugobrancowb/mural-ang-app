@@ -31,6 +31,7 @@ export class MuralComponent implements OnInit {
     }
   }
 
+  /* GET para obter a lista desejada à partir de um id */
   getmural(id: number) {
     this._dataservice.get_mural_db(id).subscribe( (res: Array<Imagem>) => {
       var mural = res; /* salva os resultados no serviço para obte-los novamente sem precisar da API */
@@ -42,6 +43,13 @@ export class MuralComponent implements OnInit {
       this._dataservice.lista = mural; /* salva os resultados no serviço para obte-los novamente sem precisar da API */
       this._dataservice.update_list(); /* update 'in_mural' boolean value */
       this.lista = this._dataservice.get_lista(); /* atualiza a busca da pagina */
+    });
+  }
+
+  /* POST para salvar o mural em um banco de dados */
+  postmural() {
+    this._dataservice.post_mural_db(this.lista).subscribe( (res: any) => {
+      console.log(res.id);
     });
   }
 

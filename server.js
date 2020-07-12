@@ -1,10 +1,21 @@
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 const app = express();
 const path = require('path');
 //const mysql = require('mysql');
 
 app.use(cors({origin: true, credentials: true}));
+
+/*
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
+*/
+
+app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'dist/muralapp')));
 
@@ -12,7 +23,13 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'dist/muralapp', 'index.html'));
 });
 
-/* GET method para obter a lista desejada à partir de um endereço */
+/* GET Method utilizando parametro do endereço URL
+app.get('/mural:id', function (req, res) {
+  console.log(req.params.id);
+});
+*/
+
+/* GET Method para obter a lista desejada à partir de um id */
 app.get('/getmural', function (req, res) {
 
   console.log('numero id: ' + req.query.id);
@@ -60,6 +77,12 @@ app.get('/getmural', function (req, res) {
     }];
 
   res.send(dummylist);
+});
+
+/* POST Method para salvar o mural em um banco de dados */
+app.post('/share-mural', function(req, res) {
+  console.log(req.body.mural); /* isso é uma Array<Imagem> */
+  res.send({id: 4579}); /* retorna uma unique ID para resgatar a lista posteriormente */
 });
 
 /* porta local */
