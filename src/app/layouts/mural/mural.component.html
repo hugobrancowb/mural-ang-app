@@ -1,6 +1,7 @@
 <div class="container mural">
   <h1>Seu Mural</h1>
   <p class="descricao">Aqui você pode abrir as imagens que você selecionou ou removê-las de sua lista.</p>
+  <button (click)="getmural(55)">Teste de GET</button>
 </div>
 
 <div *ngIf="lista.length > 0 then listaPreench else listaVazia"></div>

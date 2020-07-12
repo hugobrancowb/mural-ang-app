@@ -47,17 +47,6 @@ export class MuralDataService {
     return this.lista;
   }
 
-  /* busca imagens utilizando API */
-  search_img(query: string): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        "Authorization": "563492ad6f91700001000001e88bb619b19848698039eed32a602d79"
-      })
-    };
-
-    return this.http.get('https://api.pexels.com/v1/search?query=' + query + '&per_page=24', httpOptions);
-  }
-
   /* update 'in_mural' boolean value */
   update_list() {
     this.search.map(el_search => {
@@ -86,6 +75,24 @@ export class MuralDataService {
       // Set it
       document.cookie = "lista"+"="+JSON.stringify(this.lista)+"; expires="+date.toUTCString()+"; path=/";
     }
+  }
+
+  /* METÓDOS HTTP */
+  
+  /* [GET] busca imagens utilizando API */
+  search_img(query: string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Authorization": "563492ad6f91700001000001e88bb619b19848698039eed32a602d79"
+      })
+    };
+
+    return this.http.get('https://api.pexels.com/v1/search?query=' + query + '&per_page=24', httpOptions);
+  }
+
+  /* [GET] obter mural no banco de dados */
+  get_mural_db(id: number) {
+    return this.http.get('http://127.0.0.1:3000/getmural?id=' + id);
   }
 
 }

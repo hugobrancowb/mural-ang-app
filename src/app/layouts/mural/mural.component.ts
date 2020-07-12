@@ -31,4 +31,18 @@ export class MuralComponent implements OnInit {
     }
   }
 
+  getmural(id: number) {
+    this._dataservice.get_mural_db(id).subscribe( (res: Array<Imagem>) => {
+      var mural = res; /* salva os resultados no serviço para obte-los novamente sem precisar da API */
+
+      mural.map(el => {
+        el.in_mural = true;
+      });
+
+      this._dataservice.lista = mural; /* salva os resultados no serviço para obte-los novamente sem precisar da API */
+      this._dataservice.update_list(); /* update 'in_mural' boolean value */
+      this.lista = this._dataservice.get_lista(); /* atualiza a busca da pagina */
+    });
+  }
+
 }
