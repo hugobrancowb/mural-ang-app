@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const path = require('path');
 const mysql = require('mysql');
+const uuid = require('uuid');
 
 // app.use(cors({origin: 'https://64.225.11.99', credentials: true}));
 
@@ -65,7 +66,8 @@ app.get('/get-mural', function (req, res) {
 app.post('/share-mural', function(req, res) {
 
   let pool;
-  var id = 55;
+  const id_long = uuid.v1();
+  var id = id_long.split('-')[0];
   var post_response = false;
   var mural_str = JSON.stringify(req.body.mural);
 
@@ -79,7 +81,7 @@ app.post('/share-mural', function(req, res) {
 
   createPool().then(async function () {
     try {
-      const sharemural = await pool.query(`INSERT INTO share_mural(id, mural_str) VALUES ('` + id + `', '` + mural_str + `');`);
+      const sharemural = await pool.query(`INSERT INTO share_mural(id, mural_str, date) VALUES ('` + id + `', '` + mural_str + `', NOW());`);
       post_response = true;
     } catch (err) {
       console.log(err);

@@ -11,6 +11,10 @@ import { Imagem } from 'src/app/models/imagem.model';
 export class MuralComponent implements OnInit {
 
   public lista: Array<Imagem>;
+  public share_link = {
+    id: '',
+    flag: false
+  }
 
   constructor(private _dataservice: MuralDataService) {
     this.lista = _dataservice.get_lista();
@@ -34,9 +38,8 @@ export class MuralComponent implements OnInit {
   }
 
   /* GET para obter a lista desejada à partir de um id */
-  getmural(id: number) {
+  getmural(id: string) {
     this._dataservice.get_mural_db(id).subscribe( (res: Array<Imagem>) => {
-      console.log('teste de response do get:');
       console.log(res);
       var mural = res; /* salva os resultados no serviço para obte-los novamente sem precisar da API */
 
@@ -53,8 +56,13 @@ export class MuralComponent implements OnInit {
   /* POST para salvar o mural em um banco de dados */
   postmural() {
     this._dataservice.post_mural_db(this.lista).subscribe( (res: any) => {
-      console.log(res.id);
-      console.log(res.status);
+      if(res.status) {
+        this.share_link.flag = true;
+        this.share_link.id = res.id;
+        
+        console.log(typeof res.id);
+        console.log(res.id);
+      };
     });
   }
 

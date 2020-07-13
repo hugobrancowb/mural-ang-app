@@ -93,7 +93,7 @@ export class MuralDataService {
   }
 
   /* [GET] obter mural no banco de dados */
-  get_mural_db(id: number) {
+  get_mural_db(id: string) {
     return this.http.get('https://muralapp.me/get-mural?id=' + id);
   }
 

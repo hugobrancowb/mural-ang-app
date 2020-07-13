@@ -43,9 +43,22 @@ div.mural {
     justify-content: center;
     margin-top: 10px;
     
-      button {
-        margin: 0px 5px;
-      }
+    button {
+      border-radius: 50px;
+      margin: 0px 5px;
+    }
+
+    input {
+      border: 1px solid #D4D4D4;
+      border-radius: 50px;
+      color: #333333;
+      font-size: 14px;
+      padding: 7px 15px;
+      width: 270px;
+      max-width: 100%;
+
+      &:focus { outline: none; }
+    }
   }
 
 }
