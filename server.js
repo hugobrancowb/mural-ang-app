@@ -37,7 +37,6 @@ app.get('/mural:id', function (req, res) {
 
 /* GET Method para obter a lista desejada à partir de um id */
 app.get('/get-mural', function (req, res) {
-
   let pool;
   var id = req.query.id;
 
@@ -51,14 +50,14 @@ app.get('/get-mural', function (req, res) {
 
   createPool().then(async function () {
     try {
-      const newsQuery = await pool.query(`SELECT mural_str from share_mural WHERE id = ` + id, function(err, results, fields){
-        var mural_obj = JSON.parse(results); /* converte para objeto */
+      const getmural = await pool.query(`SELECT mural_str from share_mural WHERE id = '` + id + `';`, function(err, results, fields){
+        const obj = results[0];
+        const mural_obj = obj.mural_str.toString();
         res.send(mural_obj); /* envia o mural em objeto para o front */
       });
     } catch (err) {
       console.log(err);
     }
-
   });
 });
 
@@ -80,7 +79,7 @@ app.post('/share-mural', function(req, res) {
 
   createPool().then(async function () {
     try {
-      const newsQuery = await pool.query(`INSERT INTO share_mural(` + id + `, ` + mural_str + `, NOW());`);
+      const sharemural = await pool.query(`INSERT INTO share_mural(id, mural_str) VALUES ('` + id + `', '` + mural_str + `');`);
       post_response = true;
     } catch (err) {
       console.log(err);
