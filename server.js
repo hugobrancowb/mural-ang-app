@@ -5,7 +5,14 @@ const app = express();
 const path = require('path');
 const mysql = require('mysql');
 
-app.use(cors({origin: true, credentials: true}));
+// app.use(cors({origin: 'https://64.225.11.99', credentials: true}));
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
+  app.use(cors());
+  next();
+});
 
 /*
 app.use(
@@ -17,10 +24,9 @@ app.use(
 
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, 'dist/muralapp')));
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'dist/muralapp', 'index.html'));
+app.get('/teste', function (req, res) {
+	res.send('Teste ok');
 });
 
 /* GET Method utilizando parametro do endereço URL
@@ -87,6 +93,4 @@ app.post('/share-mural', function(req, res) {
 
 /* porta local */
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`App listening on http://localhost:${port}`);
-});
+app.listen(port);
