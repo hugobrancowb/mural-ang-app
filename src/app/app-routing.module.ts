@@ -8,7 +8,7 @@ import { MuralComponent } from './layouts/mural/mural.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'mural', component: MuralComponent },
-  { path: 'mural/:id', component: MuralComponent }, // teste params id
+  { path: 'mural/:id', component: MuralComponent },
 ];
 
 @NgModule({
