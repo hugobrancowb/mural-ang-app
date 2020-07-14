@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MuralDataService } from '../../services/mural-data.service'
 import { Imagem } from 'src/app/models/imagem.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-mural',
@@ -16,8 +17,13 @@ export class MuralComponent implements OnInit {
     flag: false
   }
 
-  constructor(private _dataservice: MuralDataService) {
+  constructor(private _dataservice: MuralDataService, private route: ActivatedRoute) {
     this.lista = _dataservice.get_lista();
+    if(this.route.snapshot.params.id) { /* há um parametro no link url */
+      const id = this.route.snapshot.params.id; /* parametro recebido pela url (typeof string) */
+
+      this.getmural(id);
+    }
   }
 
   ngOnInit(): void {
