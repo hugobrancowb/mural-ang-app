@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MuralDataService } from '../../services/mural-data.service'
 import { Imagem } from 'src/app/models/imagem.model';
 import { ActivatedRoute } from '@angular/router';
+import { Placeholder } from 'src/app/models/placeholder';
 
 @Component({
   selector: 'app-mural',
@@ -33,6 +34,8 @@ export class MuralComponent implements OnInit {
 
   /* GET para obter a lista desejada à partir de um id */
   getmural(id: string) {
+    this.lista = Placeholder; /* cria grid vazia como placeholder enquanto o API realiza a busca */
+
     this._dataservice.get_mural_db(id).subscribe( (res: Array<Imagem>) => {
       var mural = res; /* salva os resultados no serviço para obte-los novamente sem precisar da API */
 
