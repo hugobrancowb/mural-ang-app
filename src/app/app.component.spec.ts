@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'mural-ang-app'`, () => {
+  it(`should have as title 'MuralApp'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('mural-ang-app');
+    expect(app.title).toEqual('MuralApp');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('mural-ang-app app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('MuralApp app is running!');
   });
 });
