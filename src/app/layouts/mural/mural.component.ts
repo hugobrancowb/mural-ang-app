@@ -41,6 +41,10 @@ export class MuralComponent implements OnInit {
       this._dataservice.lista = mural; /* salva os resultados no serviço para obte-los novamente sem precisar da API */
       this._dataservice.update_list(); /* update 'in_mural' boolean value */
       this.lista = this._dataservice.get_lista(); /* atualiza a busca da pagina */
+      
+      this.share_link.id = id;
+      this.share_link.flag = true;
+
     });
   }
 
