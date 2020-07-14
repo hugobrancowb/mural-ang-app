@@ -2,11 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
-const path = require('path');
 const mysql = require('mysql');
 const uuid = require('uuid');
-
-// app.use(cors({origin: 'https://64.225.11.99', credentials: true}));
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -15,26 +12,11 @@ app.use((req, res, next) => {
   next();
 });
 
-/*
-app.use(
-  bodyParser.urlencoded({
-    extended: true
-  })
-);
-*/
-
 app.use(bodyParser.json());
-
 
 app.get('/teste', function (req, res) {
 	res.send('Teste ok');
 });
-
-/* GET Method utilizando parametro do endereço URL
-app.get('/mural:id', function (req, res) {
-  console.log(req.params.id);
-});
-*/
 
 /* GET Method para obter a lista desejada à partir de um id */
 app.get('/get-mural', function (req, res) {
