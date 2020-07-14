@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class MuralComponent implements OnInit {
 
   public lista: Array<Imagem>;
+
   public share_link = {
     id: '',
     flag: false
@@ -19,6 +20,7 @@ export class MuralComponent implements OnInit {
 
   constructor(private _dataservice: MuralDataService, private route: ActivatedRoute) {
     this.lista = _dataservice.get_lista();
+
     if(this.route.snapshot.params.id) { /* há um parametro no link url */
       const id = this.route.snapshot.params.id; /* parametro recebido pela url (typeof string) */
 
