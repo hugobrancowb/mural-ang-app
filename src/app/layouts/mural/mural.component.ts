@@ -27,26 +27,11 @@ export class MuralComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /* COOKIE DISABLED
-    const value = "; " + document.cookie;
-    var getcookie = value.split("; " + "lista" + "=");
-
-    if (getcookie.length == 2) {
-      var cookie_list = getcookie.pop().split(";").shift();
-
-      if (cookie_list.length > 0) {
-        this.lista = JSON.parse(cookie_list);
-        this._dataservice.lista = this.lista;
-      }
-
-    }
-    */
   }
 
   /* GET para obter a lista desejada à partir de um id */
   getmural(id: string) {
     this._dataservice.get_mural_db(id).subscribe( (res: Array<Imagem>) => {
-      console.log(res);
       var mural = res; /* salva os resultados no serviço para obte-los novamente sem precisar da API */
 
       mural.map(el => {
@@ -65,9 +50,6 @@ export class MuralComponent implements OnInit {
       if(res.status) {
         this.share_link.flag = true;
         this.share_link.id = res.id;
-        
-        console.log(typeof res.id);
-        console.log(res.id);
       };
     });
   }
