@@ -20,13 +20,13 @@ export class GridImagesComponent {
   
   add(obj) {
     if(obj.photographer_url !== 'https://muralapp.me') {
-      this._dataservice.add_lista(obj);
+      this._dataservice.addLista(obj);
     }
   }
 
   rmv(obj) {
-    this._dataservice.rmv_lista(obj.id);
-    this.image_list = (this.isMural) ? this._dataservice.get_lista() : this._dataservice.get_search(); /* atualiza a lista atual de acordo com a página (search/mural) */
+    this._dataservice.rmvLista(obj.id);
+    this.image_list = (this.isMural) ? this._dataservice.getLista() : this._dataservice.getSearch(); /* atualiza a lista atual de acordo com a página (search/mural) */
   }
 
 }
