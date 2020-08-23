@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { debounceTime, tap } from 'rxjs/operators'
+import { debounceTime, tap } from 'rxjs/operators';
 import { Imagem } from 'src/app/models/imagem.model';
-import { MuralDataService } from '../../services/mural-data.service'
+import { MuralDataService } from '../../services/mural-data.service';
 import { Placeholder } from 'src/app/models/placeholder';
 
 @Component({
@@ -18,18 +18,21 @@ export class HomeComponent {
   /* grupo criado para o Form de busca */
   formsearch = new FormGroup({
     query: new FormControl('')
+
   });
 
   constructor(private _dataservice: MuralDataService) {
     /* precisa do constructor para obter o valor novamente qnd sair e voltar para a pagina */
+
     this.search_list = this._dataservice.get_search();
     this.formsearch.patchValue({query: this._dataservice.last_query});
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   ngOnInit(): void {
   }
 
-  search() {
+  search(): void {
     this.search_list = Placeholder; /* cria grid vazia como placeholder enquanto o API realiza a busca */
 
     const busca_query = (this.formsearch.value).query;

@@ -22,8 +22,8 @@ export class MuralComponent implements OnInit {
   constructor(private _dataservice: MuralDataService, private route: ActivatedRoute) {
     this.lista = _dataservice.get_lista();
 
-    if(this.route.snapshot.params.id) { /* há um parametro no link url */
-      const id = this.route.snapshot.params.id; /* parametro recebido pela url (typeof string) */
+    if(this.route.snapshot.params.id) { // há um parametro no link url
+      const id = this.route.snapshot.params.id; // parametro recebido pela url (typeof string) */
 
       this.getmural(id);
     }
@@ -34,18 +34,18 @@ export class MuralComponent implements OnInit {
 
   /* GET para obter a lista desejada à partir de um id */
   getmural(id: string) {
-    this.lista = Placeholder; /* cria grid vazia como placeholder enquanto o API realiza a busca */
+    this.lista = Placeholder; // cria grid vazia como placeholder enquanto o API realiza a busca
 
     this._dataservice.get_mural_db(id).subscribe( (res: Array<Imagem>) => {
-      var mural = res; /* salva os resultados no serviço para obte-los novamente sem precisar da API */
+      var mural = res; // salva os resultados no serviço para obte-los novamente sem precisar da API
 
       mural.map(el => {
         el.in_mural = true;
       });
 
-      this._dataservice.lista = mural; /* salva os resultados no serviço para obte-los novamente sem precisar da API */
-      this._dataservice.update_list(); /* update 'in_mural' boolean value */
-      this.lista = this._dataservice.get_lista(); /* atualiza a busca da pagina */
+      this._dataservice.lista = mural; // salva os resultados no serviço para obte-los novamente sem precisar da API
+      this._dataservice.update_list(); // update 'in_mural' boolean value
+      this.lista = this._dataservice.get_lista(); // atualiza a busca da pagina
     });
   }
 
