@@ -22,7 +22,7 @@ export class HomeComponent {
   });
 
   constructor(private _dataservice: MuralDataService) {
-    /* precisa do constructor para obter o valor novamente qnd sair e voltar para a pagina */
+    // precisa do constructor para obter o valor novamente qnd sair e voltar para a pagina
 
     this.search_list = this._dataservice.get_search();
     this.formsearch.patchValue({query: this._dataservice.last_query});
@@ -33,7 +33,7 @@ export class HomeComponent {
   }
 
   search(): void {
-    this.search_list = Placeholder; /* cria grid vazia como placeholder enquanto o API realiza a busca */
+    this.search_list = Placeholder; // cria grid vazia como placeholder enquanto o API realiza a busca
 
     const busca_query = (this.formsearch.value).query;
 
