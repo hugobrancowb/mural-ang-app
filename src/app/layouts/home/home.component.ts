@@ -37,10 +37,7 @@ export class HomeComponent {
     this._dataservice.search_img( busca_query ).pipe(
       debounceTime(500),
       tap((res) => {
-        this._dataservice.last_query = busca_query;
-        this._dataservice.search = res.photos; /* salva os resultados no serviço para obte-los novamente sem precisar da API */
-        this._dataservice.update_list(); /* update 'in_mural' boolean value */
-        this.search_list = this._dataservice.get_search(); /* atualiza a busca da pagina */
+        this.search_list = res.photos;
       })
     ).subscribe();
   }

@@ -4,6 +4,7 @@ import { HttpHeaders } from '@angular/common/http';
 
 import { Imagem } from '../models/imagem.model';
 import { Observable, Subject } from 'rxjs';
+import { tap, switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -75,13 +76,20 @@ export class MuralDataService {
   
   /* [GET] busca imagens utilizando a API da Pexels */
   search_img(query: string): Observable<any> {
+    this.last_query = query;
+
     const httpOptions = {
       headers: new HttpHeaders({
         "Authorization": "563492ad6f91700001000001e88bb619b19848698039eed32a602d79"
       })
     };
 
-    return this.http.get('https://api.pexels.com/v1/search?query=' + query + '&per_page=24', httpOptions);
+    return this.http.get('https://api.pexels.com/v1/search?query=' + query + '&per_page=24', httpOptions).pipe(
+      tap((res: any) => {
+        this.search = res.photos;
+        return this.get_search();
+      })
+    );
   }
 
   /* [GET] obter mural no banco de dados em nosso servidor */
