@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-
+import { debounceTime, tap } from 'rxjs/operators'
 import { Imagem } from 'src/app/models/imagem.model';
 import { MuralDataService } from '../../services/mural-data.service'
 import { Placeholder } from 'src/app/models/placeholder';
@@ -33,12 +33,16 @@ export class HomeComponent {
     this.search_list = Placeholder; /* cria grid vazia como placeholder enquanto o API realiza a busca */
 
     const busca_query = (this.formsearch.value).query;
-    this._dataservice.search_img( busca_query ).subscribe(res => {
-      this._dataservice.last_query = busca_query;
-      this._dataservice.search = res.photos; /* salva os resultados no serviço para obte-los novamente sem precisar da API */
-      this._dataservice.update_list(); /* update 'in_mural' boolean value */
-      this.search_list = this._dataservice.get_search(); /* atualiza a busca da pagina */
-    });
+
+    this._dataservice.search_img( busca_query ).pipe(
+      debounceTime(500),
+      tap((res) => {
+        this._dataservice.last_query = busca_query;
+        this._dataservice.search = res.photos; /* salva os resultados no serviço para obte-los novamente sem precisar da API */
+        this._dataservice.update_list(); /* update 'in_mural' boolean value */
+        this.search_list = this._dataservice.get_search(); /* atualiza a busca da pagina */
+      })
+    ).subscribe();
   }
 
 }
