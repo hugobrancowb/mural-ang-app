@@ -100,7 +100,9 @@ export class MuralDataService {
 
   /* [GET] obter mural no banco de dados em nosso servidor */
   getMuralDB(id: string): Observable<any> {
-    return this.http.get('https://muralapp.me/get-mural?id=' + id);
+    return this.http.get('https://muralapp.me/get-mural?id=' + id, {
+      observe: 'response',
+    });
   }
 
   /* [POST] salva o mural em um banco de dados em nosso servidor */
